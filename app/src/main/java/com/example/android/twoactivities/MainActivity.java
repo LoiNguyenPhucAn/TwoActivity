@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
@@ -55,13 +56,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(LOG_TAG, "-------");
+        Log.d(LOG_TAG, "onCreate");
+
         // Initialize all the view variables.
         mMessageEditText = findViewById(R.id.editText_main);
         mReplyHeadTextView = findViewById(R.id.text_header_reply);
         mReplyTextView = findViewById(R.id.text_message_reply);
 
-        Log.d(LOG_TAG, "-------");
-        Log.d(LOG_TAG, "onCreate");
+         // Restore the saved state.
+        // See onSaveInstanceState() for what gets saved.
+        if (savedInstanceState != null) {
+            boolean isVisible =
+                    savedInstanceState.getBoolean("reply_visible");
+            // Show both the header and the message views. If isVisible is
+            // false or missing from the bundle, use the default layout.
+            if (isVisible) {
+                mReplyHeadTextView.setVisibility(View.VISIBLE);
+                mReplyTextView.setText(savedInstanceState
+                        .getString("reply_text"));
+                mReplyTextView.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
@@ -98,6 +114,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.d(LOG_TAG, "onDestroy");
+    }
+
+    /**
+     * To keep from losing data in an Activity when it is unexpectedly destroyed and recreated,
+     * you need to implement the onSaveInstanceState() method.
+     * The system calls this method on your Activity (between onPause() and onStop())
+     * when there is a possibility the Activity may be destroyed and recreated.
+
+     * The data you save in the instance state is specific to only this instance of this specific Activity during the current app session.
+     * When you stop and restart a new app session, the Activity instance state is lost and the Activity reverts to its default appearance.
+     * If you need to save user data between app sessions, use shared preferences or a database.
+     * */
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // If the heading is visible, message needs to be saved.
+        // Otherwise we're still using default layout.
+        if (mReplyHeadTextView.getVisibility() == View.VISIBLE) {
+            outState.putBoolean("reply_visible", true);
+            outState.putString("reply_text",
+                    mReplyTextView.getText().toString());
+        }
+
     }
 
     /**

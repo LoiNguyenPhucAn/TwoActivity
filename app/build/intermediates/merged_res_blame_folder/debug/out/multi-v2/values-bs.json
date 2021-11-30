@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Android\\Excercise\\android-fundamentals-apps-v2\\android-fundamentals-apps-v2-16be5f95655578550cbd4c31e20da859ea4746ce\\TwoActivities\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
+            "outputFile": "D:\\GitHub\\TwoActivity\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-bs\\values-bs.xml",
             "map": [
                 {
                     "source": "D:\\Android\\.gradle\\caches\\transforms-3\\376792b261fdcbfd86757f02ea12377d\\transformed\\core-1.7.0\\res\\values-bs\\values-bs.xml",

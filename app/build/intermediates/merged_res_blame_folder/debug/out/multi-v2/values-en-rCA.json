@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Android\\Excercise\\android-fundamentals-apps-v2\\android-fundamentals-apps-v2-16be5f95655578550cbd4c31e20da859ea4746ce\\TwoActivities\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
+            "outputFile": "D:\\GitHub\\TwoActivity\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
                     "source": "D:\\Android\\.gradle\\caches\\transforms-3\\b6875e6c8278ccf12a9733441eb70c4c\\transformed\\appcompat-1.4.0\\res\\values-en-rCA\\values-en-rCA.xml",
